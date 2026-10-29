@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyriic</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dynamic font-inter size-medium">
+
+  <!-- Lumn-style Ambient Edge Backlight Halo (Audio-Reactive) -->
+  <div id="lumn-edge-halo" class="lumn-edge-halo"></div>
+
+  <!-- Smoky Ambient Mesh Reactive Background -->
+  <div id="ambient-backdrop" class="ambient-backdrop mode-lumn">
+    <div class="smoke-orb orb-1"></div>
+    <div class="smoke-orb orb-2"></div>
+    <div class="smoke-orb orb-3"></div>
+    <div class="smoke-noise"></div>
+  </div>
+
+  <!-- Main App Shell -->
+  <div id="app-shell" class="app-shell">
+    
+    <!-- Custom Windows Frameless Titlebar -->
+    <header id="custom-titlebar" class="custom-titlebar">
+      <div class="titlebar-drag-region">
+        <div class="titlebar-brand">
+          <svg class="brand-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+          <span class="brand-name">Lyriic</span>
+          <!-- GitHub Creator Credit Badge -->
+          <button class="creator-badge github-link-btn" data-url="https://github.com/jeetron1x" title="Made by jeetron1x on GitHub">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path>
+            </svg>
+            <span>by jeetron1x</span>
+          </button>
+        </div>
+        <div class="titlebar-nowplaying hidden" id="titlebar-nowplaying">
+          <span class="np-title" id="titlebar-title"></span>
+          <span class="np-sep">•</span>
+          <span class="np-artist" id="titlebar-artist"></span>
+        </div>
+      </div>
+
+      <div class="titlebar-actions">
+        <!-- Quick View Controls -->
+        <button id="btn-header-overlay" class="tb-btn" title="Desktop Transparent Overlay (T)">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+            <rect x="7" y="13" width="10" height="5" rx="1.5" fill="currentColor" opacity="0.4"></rect>
+          </svg>
+        </button>
+        <button id="btn-header-fullscreen" class="tb-btn" title="Fullscreen Lyrics Mode (F / F11)">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+          </svg>
+        </button>
+        <button id="btn-header-settings" class="tb-btn" title="Settings, Aesthetics &amp; Ambient Lighting">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+
+        <!-- Windows Native Window Buttons -->
+        <button id="btn-win-minimize" class="tb-btn win-ctrl" title="Minimize">
+          <svg viewBox="0 0 12 12" width="10" height="10">
+            <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.2"></line>
+          </svg>
+        </button>
+        <button id="btn-win-maximize" class="tb-btn win-ctrl" title="Maximize">
+          <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="1.5" y="1.5" width="9" height="9" rx="1"></rect>
+          </svg>
+        </button>
+        <button id="btn-win-close" class="tb-btn win-ctrl close-btn" title="Close">
+          <svg viewBox="0 0 12 12" width="10" height="10" stroke="currentColor" stroke-width="1.2">
+            <line x1="2" y1="2" x2="10" y2="10"></line>
+            <line x1="10" y1="2" x2="2" y2="10"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="workspace-layout">
+      <!-- Smoky Glass Left Sidebar -->
+      <aside class="sidebar-pane glassy-card">
+        <nav class="sidebar-nav">
+          <div class="nav-section-title">DISCOVER</div>
+          <button class="nav-item active" data-tab="lyrics">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              <line x1="8" y1="7" x2="16" y2="7"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+            <span>Lyrics &amp; Stage</span>
+          </button>
+          <button class="nav-item" data-tab="search">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>Search Music</span>
+          </button>
+
+          <div class="nav-section-title">COLLECTION</div>
+          <button class="nav-item" data-tab="playlists">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="16" y2="18"></line>
+              <circle cx="4" cy="6" r="2"></circle>
+              <circle cx="4" cy="12" r="2"></circle>
+              <circle cx="4" cy="18" r="2"></circle>
+            </svg>
+            <span>Playlists</span>
+          </button>
+          <button class="nav-item" data-tab="library">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span>Local Library</span>
+          </button>
+          <button class="nav-item" data-tab="favorites">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span>Liked Songs</span>
+          </button>
+          <button class="nav-item" data-tab="history">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </button>
+
+          <div class="nav-section-title">PREFERENCES</div>
+          <button id="btn-sidebar-settings" class="nav-item settings-nav-btn" title="Settings, Aesthetics & Ambient Lighting (Ctrl+,)">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <span>Settings &amp; Lights</span>
+          </button>
+        </nav>
+
+        <!-- Sidebar Mini Album Art Widget & Creator Link -->
+        <div class="sidebar-bottom-block">
+          <div class="sidebar-track-preview hidden" id="sidebar-track-preview">
+            <div class="preview-cover-wrapper">
+              <img id="sidebar-cover-img" src="assets/covers/default-cover.svg" alt="Album Cover">
+              <div class="cover-shine"></div>
+            </div>
+            <div class="preview-track-meta">
+              <div id="sidebar-track-title" class="track-title-text"></div>
+              <div id="sidebar-track-artist" class="track-artist-text"></div>
+            </div>
+          </div>
+
+          <button class="sidebar-creator-link github-link-btn" data-url="https://github.com/jeetron1x">
+            <span>Crafted by <strong>jeetron1x</strong></span>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path>
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Center Main Content Views -->
+      <main class="main-content-pane">
+        
+        <!-- View 1: Hero Lyrics View -->
+        <section id="view-lyrics" class="view-panel active">
+          <!-- Lyrics Toolbar Header -->
+          <div class="lyrics-toolbar glassy-bar">
+            <div class="lyrics-styles-group">
+              <button class="style-pill active" data-style="verci" title="Verci Kinetic Typography">Kinetic</button>
+              <button class="style-pill" data-style="spatial" title="Spatial 3D Perspective Wall">Spatial 3D</button>
+              <button class="style-pill" data-style="minimal" title="Editorial Minimalist">Minimal</button>
+              <button class="style-pill" data-style="dual" title="Dual Subtitle Focus Cassette">Dual</button>
+            </div>
+
+            <div class="lyrics-actions-group">
+              <!-- Sync Offset Nudge -->
+              <div class="offset-nudge-box" title="Adjust lyrics timing">
+                <button id="btn-offset-minus" class="nudge-btn">-0.5s</button>
+                <span id="offset-indicator" class="offset-value">0.0s</span>
+                <button id="btn-offset-plus" class="nudge-btn">+0.5s</button>
+              </div>
+
+              <!-- Import LRC Button -->
+              <button id="btn-import-lrc" class="action-btn" title="Import external .lrc file">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <span>Import .lrc</span>
+              </button>
+
+              <button id="btn-fetch-lyrics" class="action-btn" title="Refresh lyrics from LRCLIB">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                </svg>
+                <span>Fetch</span>
+              </button>
+
+              <button id="btn-stage-settings" class="action-btn ambient-trigger-btn" title="Ambient Lighting &amp; Themes (Ctrl+,)">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                </svg>
+                <span>💡 Ambient &amp; Themes</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Lyrics Display Container -->
+          <div id="lyrics-scroll-container" class="lyrics-scroll-container">
+            <div id="lyrics-list" class="lyrics-list style-verci">
+              <!-- Dynamically populated by LyricsEngine -->
+            </div>
+
+            <!-- Floating Return to Current Line Pill -->
+            <button id="btn-scroll-to-current" class="scroll-to-current-pill">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+              <span>Scroll to current</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- View 2: Search Music View -->
+        <section id="view-search" class="view-panel">
+          <div class="panel-header">
+            <h2 class="section-heading">Search Music</h2>
+            <p class="section-subheading">Stream in high fidelity (320kbps) with rich album artwork and real-time word-by-word lyrics.</p>
+          </div>
+
+          <div class="search-input-wrapper glassy-card">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="music-search-input" placeholder="Search song title, artist, or album... (e.g. Coldplay Yellow, The Weeknd, Billie Eilish)" autofocus autocomplete="off">
+            <button id="btn-clear-search" class="clear-search-btn" title="Clear">✕</button>
+            <div id="search-spinner" class="search-spinner hidden"></div>
+          </div>
+
+          <!-- Search Results Container -->
+          <div class="search-results-container">
+            <div id="search-results-list" class="tracks-list">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+        </section>
+
+        <!-- View 3: Local Library View -->
+        <section id="view-library" class="view-panel">
+          <div class="panel-header flex-header">
+            <div>
+              <h2 class="section-heading">Local Library</h2>
+              <p class="section-subheading">Play your local MP3, FLAC, WAV, AAC, and M4A audio with embedded metadata and synced lyrics.</p>
+            </div>
+            <div class="header-action-buttons">
+              <button id="btn-open-files" class="glow-button">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="12" y1="18" x2="12" y2="12"></line>
+                  <line x1="9" y1="15" x2="15" y2="15"></line>
+                </svg>
+                <span>Add Files</span>
+              </button>
+              <button id="btn-open-dir" class="secondary-button">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Scan Folder</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="library-dropzone" class="library-dropzone glassy-card">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <p class="dropzone-text">Drag and drop audio files or music folders here</p>
+            <span class="dropzone-sub">Supports MP3, FLAC, WAV, M4A, OGG, and adjacent .lrc files</span>
+          </div>
+
+          <div id="library-tracks-list" class="tracks-list">
+            <!-- Bundled demo tracks + scanned tracks -->
+          </div>
+        </section>
+
+        <!-- View 4: Liked Songs View -->
+        <section id="view-favorites" class="view-panel">
+          <div class="panel-header">
+            <h2 class="section-heading">Liked Songs</h2>
+            <p class="section-subheading">Your favorite songs saved locally on your device.</p>
+          </div>
+          <div id="favorites-tracks-list" class="tracks-list">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- View 5: History View -->
+        <section id="view-history" class="view-panel">
+          <div class="panel-header flex-header">
+            <div>
+              <h2 class="section-heading">Listening History</h2>
+              <p class="section-subheading">Locally tracked listening history. Private and secure.</p>
+            </div>
+            <button id="btn-clear-history" class="secondary-button danger">Clear History</button>
+          </div>
+          <div id="history-tracks-list" class="tracks-list">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- View 6: Playlists View -->
+        <section id="view-playlists" class="view-panel">
+          <!-- Main Playlists Grid Subview -->
+          <div id="playlists-main-subview" class="playlists-subview">
+            <div class="panel-header flex-header">
+              <div>
+                <h2 class="section-heading">Your Playlists</h2>
+                <p class="section-subheading">Create unlimited playlists, organize songs, and play your mixes anytime.</p>
+              </div>
+              <button id="btn-create-playlist-header" class="primary-button add-pl-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>New Playlist</span>
+              </button>
+            </div>
+            
+            <div class="playlists-filter-bar">
+              <input type="text" id="input-search-playlists" class="search-input compact" placeholder="Filter your playlists...">
+            </div>
+
+            <div id="playlists-grid" class="playlists-grid">
+              <!-- Dynamically populated playlist cards -->
+            </div>
+          </div>
+
+          <!-- Playlist Details Subview -->
+          <div id="playlist-detail-subview" class="playlists-subview hidden">
+            <div class="playlist-detail-header glassy-card">
+              <button id="btn-back-playlists" class="back-link-btn" title="Back to All Playlists">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+                <span>All Playlists</span>
+              </button>
+
+              <div class="playlist-hero">
+                <div class="pl-hero-cover-wrap">
+                  <img id="pl-detail-cover" class="pl-hero-cover" src="assets/covers/default-cover.svg" alt="Cover">
+                  <div class="cover-shine"></div>
+                </div>
+                <div class="pl-hero-meta">
+                  <span class="pl-tag">PLAYLIST</span>
+                  <h1 id="pl-detail-title" class="pl-detail-title">Playlist Name</h1>
+                  <p id="pl-detail-desc" class="pl-detail-desc"></p>
+                  <div class="pl-stats">
+                    <span id="pl-detail-count" class="pl-detail-stat">0 songs</span>
+                    <span class="pl-stat-dot">•</span>
+                    <span id="pl-detail-duration" class="pl-detail-stat">0 min</span>
+                  </div>
+                  <div class="pl-hero-actions">
+                    <button id="btn-playlist-play-all" class="primary-button play-all-btn">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                      <span>Play All</span>
+                    </button>
+                    <button id="btn-playlist-add-queue" class="secondary-button" title="Add all songs to Up Next queue">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                      </svg>
+                      <span>Add to Queue</span>
+                    </button>
+                    <button id="btn-playlist-delete" class="secondary-button danger" title="Delete this playlist">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      </svg>
+                      <span>Delete</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tracks inside this playlist -->
+            <div id="playlist-tracks-list" class="tracks-list">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Up Next Queue Slide-out Pane -->
+      <aside id="queue-pane" class="queue-pane glassy-card hidden">
+        <div class="queue-header">
+          <div class="queue-title-group">
+            <h3 class="queue-heading">Up Next</h3>
+            <span id="queue-count" class="queue-badge">3 tracks</span>
+          </div>
+          <button id="btn-clear-queue" class="queue-clear-btn" title="Clear Up Next">Clear</button>
+          <button id="btn-close-queue" class="queue-close-btn" title="Close Queue">✕</button>
+        </div>
+        <div id="queue-tracks-list" class="queue-list">
+          <!-- Queue items -->
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Bottom Playback Controls Bar -->
+    <footer class="player-bar glassy-bar">
+      <!-- Left: Track Info & Like -->
+      <div class="player-left">
+        <div class="current-cover-container" id="player-cover-trigger" title="Jump to Lyrics View">
+          <img id="player-cover-img" src="assets/covers/default-cover.svg" alt="Track Artwork">
+          <div class="cover-hover-overlay">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="current-meta">
+          <div id="player-title" class="track-title" title="Track Title">No track playing</div>
+          <div id="player-artist" class="track-artist" title="Artist">Select a song to start listening</div>
+        </div>
+
+        <button id="btn-player-like" class="icon-btn like-btn" title="Save to Liked Songs">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Center: Playback Controls & Progress Slider -->
+      <div class="player-center">
+        <div class="playback-buttons">
+          <button id="btn-shuffle" class="icon-btn btn-mode" title="Shuffle (S)">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 3 21 3 21 8"></polyline>
+              <line x1="4" y1="20" x2="21" y2="3"></line>
+              <polyline points="21 16 21 21 16 21"></polyline>
+              <line x1="15" y1="15" x2="21" y2="21"></line>
+              <line x1="4" y1="4" x2="9" y2="9"></line>
+            </svg>
+          </button>
+
+          <button id="btn-prev" class="icon-btn" title="Previous (Ctrl+←)">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <polygon points="19 20 9 12 19 4 19 20"></polygon>
+              <line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2"></line>
+            </svg>
+          </button>
+
+          <button id="btn-play-pause" class="play-pause-btn" title="Play/Pause (Space)">
+            <svg id="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <svg id="icon-pause" class="hidden" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+              <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+            </svg>
+          </button>
+
+          <button id="btn-next" class="icon-btn" title="Next (Ctrl+→)">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <polygon points="5 4 15 12 5 20 5 4"></polygon>
+              <line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2"></line>
+            </svg>
+          </button>
+
+          <button id="btn-repeat" class="icon-btn btn-mode" title="Repeat (R)">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="17 1 21 5 17 9"></polyline>
+              <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+              <polyline points="7 23 3 19 7 15"></polyline>
+              <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+            </svg>
+            <span id="repeat-badge" class="repeat-one-badge hidden">1</span>
+          </button>
+        </div>
+
+        <!-- Seek Progress Bar -->
+        <div class="progress-container">
+          <span id="time-current" class="time-label">0:00</span>
+          <div id="seek-track" class="seek-track">
+            <div id="seek-buffer" class="seek-buffer"></div>
+            <div id="seek-fill" class="seek-fill"></div>
+            <div id="seek-thumb" class="seek-thumb"></div>
+            <div id="seek-tooltip" class="seek-tooltip">0:00</div>
+          </div>
+          <span id="time-total" class="time-label">0:00</span>
+        </div>
+      </div>
+
+      <!-- Right: Volume, Queue & Window Display Modes -->
+      <div class="player-right">
+        <!-- Volume Control -->
+        <div class="volume-group">
+          <button id="btn-mute" class="icon-btn" title="Mute/Unmute (M)">
+            <svg id="icon-vol-high" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+            <svg id="icon-vol-mute" class="hidden" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+          <div id="volume-track" class="volume-track" title="Volume (↑/↓)">
+            <div id="volume-fill" class="volume-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+
+        <!-- Up Next Queue Toggle -->
+        <button id="btn-toggle-queue" class="icon-btn" title="Toggle Up Next Queue">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Fullscreen Mode Toggle -->
+        <button id="btn-player-fullscreen" class="icon-btn" title="Fullscreen Lyrics Mode (F)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+          </svg>
+        </button>
+
+        <!-- Desktop Overlay Mode Toggle -->
+        <button id="btn-player-overlay" class="icon-btn" title="Desktop Transparent Overlay Mode (T)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+            <rect x="7" y="13" width="10" height="5" rx="1.5" fill="currentColor" opacity="0.5"></rect>
+          </svg>
+        </button>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Fullscreen Immersive Lyrics Mode -->
+  <div id="fullscreen-overlay" class="fullscreen-overlay hidden">
+    <!-- Lumn Ambient Edge Halo for Fullscreen -->
+    <div class="fs-ambient-halo"></div>
+
+    <div class="fs-top-bar">
+      <div class="fs-track-info">
+        <span id="fs-track-title" class="fs-title">No track playing</span>
+        <span class="fs-sep">•</span>
+        <span id="fs-track-artist" class="fs-artist">Lyriic</span>
+      </div>
+      <button id="btn-exit-fullscreen" class="fs-close-btn" title="Exit Fullscreen (Esc or F)">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Center Hero Kinetic Typography -->
+    <div id="fs-lyrics-container" class="fs-lyrics-container">
+      <div id="fs-lyrics-list" class="lyrics-list style-verci"></div>
+    </div>
+
+    <!-- Floating Bottom Playback HUD on Mouse Move -->
+    <div id="fs-hud" class="fs-hud glassy-bar">
+      <button id="btn-fs-prev" class="icon-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <polygon points="19 20 9 12 19 4 19 20"></polygon>
+          <line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2"></line>
+        </svg>
+      </button>
+      <button id="btn-fs-play-pause" class="play-pause-btn">
+        <svg id="fs-icon-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <svg id="fs-icon-pause" class="hidden" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+          <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+        </svg>
+      </button>
+      <button id="btn-fs-next" class="icon-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <polygon points="5 4 15 12 5 20 5 4"></polygon>
+          <line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2"></line>
+        </svg>
+      </button>
+      <div class="fs-seek-wrapper">
+        <span id="fs-time-current" class="time-label">0:00</span>
+        <div id="fs-seek-track" class="seek-track">
+          <div id="fs-seek-fill" class="seek-fill"></div>
+        </div>
+        <span id="fs-time-total" class="time-label">0:00</span>
+      </div>
+      <button id="btn-fs-settings" class="icon-btn" title="Ambient Lighting &amp; Settings">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Transparent Desktop Overlay Mode Layout -->
+  <div id="desktop-overlay-widget" class="desktop-overlay-widget hidden">
+    <div class="overlay-drag-handle">
+      <div class="overlay-left">
+        <img id="overlay-cover-img" src="assets/covers/default-cover.svg" alt="Cover" class="overlay-cover">
+        <div class="overlay-meta">
+          <div id="overlay-title" class="overlay-title-text">No track playing</div>
+          <div id="overlay-artist" class="overlay-artist-text">Lyriic</div>
+        </div>
+      </div>
+
+      <!-- Center: Active Word-by-Word Lyric Line -->
+      <div class="overlay-center">
+        <div id="overlay-active-lyrics" class="overlay-lyrics-line">
+          <span class="dimmed">Waiting for lyrics...</span>
+        </div>
+      </div>
+
+      <!-- Right: Mini Controls & Expand -->
+      <div class="overlay-right">
+        <button id="btn-overlay-play-pause" class="overlay-ctrl-btn" title="Play/Pause">
+          <svg id="overlay-icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <svg id="overlay-icon-pause" class="hidden" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+        </button>
+        <button id="btn-overlay-next" class="overlay-ctrl-btn" title="Next Track">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <polygon points="5 4 15 12 5 20 5 4"></polygon>
+            <line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2"></line>
+          </svg>
+        </button>
+        <button id="btn-overlay-expand" class="overlay-ctrl-btn expand-btn" title="Expand to Full Player">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comprehensive Settings & Aesthetics Modal -->
+  <div id="settings-modal" class="modal-backdrop hidden">
+    <div class="modal-card glassy-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="modal-title">Settings &amp; Aesthetics</h3>
+          <span class="modal-subtitle">Customize audio, visuals, and ambient lighting</span>
+        </div>
+        <button id="btn-close-settings" class="modal-close-btn">✕</button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- Creator Credit Box -->
+        <div class="creator-card">
+          <div class="creator-left">
+            <div class="creator-avatar">J</div>
+            <div class="creator-info">
+              <div class="creator-name">Built by <strong>jeetron1x</strong></div>
+              <div class="creator-handle">github.com/jeetron1x</div>
+            </div>
+          </div>
+          <button class="creator-gh-btn github-link-btn" data-url="https://github.com/jeetron1x">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path>
+            </svg>
+            <span>GitHub Profile</span>
+          </button>
+        </div>
+
+        <!-- 1. Lumn-style Ambient Lighting Section (trylumn.xyz) -->
+        <div class="settings-group">
+          <label class="settings-label">💡 Ambient Edge Lighting (Lumn-Style)</label>
+          <div class="toggle-row">
+            <span>Enable Audio &amp; Beat-Synced Lighting</span>
+            <input type="checkbox" id="toggle-ambient-lighting" checked class="switch-input">
+          </div>
+
+          <div class="sub-section-title">LIGHTING EFFECT MODE</div>
+          <div class="settings-options-row">
+            <button class="opt-btn active" data-setting="ambientMode" data-val="lumn">Beat Pulse</button>
+            <button class="opt-btn" data-setting="ambientMode" data-val="aurora">Aurora Wave</button>
+            <button class="opt-btn" data-setting="ambientMode" data-val="breathe">Organic Breathe</button>
+            <button class="opt-btn" data-setting="ambientMode" data-val="spectrum">Spectrum Wave</button>
+            <button class="opt-btn" data-setting="ambientMode" data-val="neon">Neon Trace</button>
+            <button class="opt-btn" data-setting="ambientMode" data-val="static">Static Bias</button>
+          </div>
+
+          <div class="sub-section-title">COLOR SOURCE &amp; CYCLE</div>
+          <div class="settings-options-row">
+            <button class="opt-btn active" data-setting="ambientColorSource" data-val="monochrome">🖤 Pure White B&amp;W</button>
+            <button class="opt-btn" data-setting="ambientColorSource" data-val="dynamic">✨ Album Cover Sync</button>
+            <button class="opt-btn" data-setting="ambientColorSource" data-val="custom">🎨 Custom Tint</button>
+            <button class="opt-btn" data-setting="ambientColorSource" data-val="spectrum">🌈 Spectrum Cycle</button>
+            <button class="opt-btn" data-setting="ambientColorSource" data-val="cyberpunk">⚡ Cyberpunk Duo</button>
+            <button class="opt-btn" data-setting="ambientColorSource" data-val="sunset">🌅 Sunset Duo</button>
+          </div>
+
+          <div class="custom-color-row hidden" id="custom-ambient-color-row">
+            <span class="sub-label">Custom Halo Glow Tint</span>
+            <input type="color" id="input-custom-ambient-color" value="#ffffff" class="color-picker-input">
+          </div>
+
+          <div class="sub-section-title">LIGHTING SIDES &amp; SPREAD DIRECTION</div>
+          <div class="settings-options-row">
+            <button class="opt-btn active" data-setting="ambientSides" data-val="all">All 4 Edges</button>
+            <button class="opt-btn" data-setting="ambientSides" data-val="tb">Top &amp; Bottom</button>
+            <button class="opt-btn" data-setting="ambientSides" data-val="lr">Left &amp; Right</button>
+          </div>
+
+          <!-- Halo Edge Spread Slider -->
+          <div class="slider-row">
+            <div class="flex-between">
+              <span class="sub-label">Halo Edge Spread Radius</span>
+              <span id="label-spread-val" class="sub-val">45px</span>
+            </div>
+            <input type="range" id="input-ambient-spread" min="10" max="150" value="45" class="range-slider">
+          </div>
+
+          <!-- Animation & Response Speed Slider -->
+          <div class="slider-row">
+            <div class="flex-between">
+              <span class="sub-label">Animation, Cycle &amp; Wave Speed</span>
+              <span id="label-speed-val" class="sub-val">1.0x</span>
+            </div>
+            <input type="range" id="input-ambient-speed" min="2" max="30" value="10" class="range-slider">
+          </div>
+
+          <!-- Lighting Brightness Intensity Slider -->
+          <div class="slider-row">
+            <div class="flex-between">
+              <span class="sub-label">Lighting Brightness Intensity</span>
+              <span id="label-intensity-val" class="sub-val">100%</span>
+            </div>
+            <input type="range" id="input-ambient-intensity" min="15" max="200" value="100" class="range-slider">
+          </div>
+
+          <!-- Audio Beat Sensitivity Slider -->
+          <div class="slider-row">
+            <div class="flex-between">
+              <span class="sub-label">Audio Beat &amp; Bass Sensitivity</span>
+              <span id="label-sensitivity-val" class="sub-val">1.0x</span>
+            </div>
+            <input type="range" id="input-beat-sensitivity" min="2" max="30" value="10" class="range-slider">
+          </div>
+        </div>
+
+        <!-- 2. Smoky Glass & Theme Section -->
+        <div class="settings-group">
+          <label class="settings-label">🎨 Color Palette &amp; Smoky Glass</label>
+          <div class="settings-options-row">
+            <button class="opt-btn active" data-setting="themePreset" data-val="monochrome">🖤 Black &amp; White (Monochrome)</button>
+            <button class="opt-btn" data-setting="themePreset" data-val="dynamic">✨ Dynamic Album Sync</button>
+            <button class="opt-btn" data-setting="themePreset" data-val="obsidian">Smoky Obsidian</button>
+            <button class="opt-btn" data-setting="themePreset" data-val="frost">Frost Mist</button>
+            <button class="opt-btn" data-setting="themePreset" data-val="amethyst">Midnight Amethyst</button>
+            <button class="opt-btn" data-setting="themePreset" data-val="emerald">Emerald Dusk</button>
+            <button class="opt-btn" data-setting="themePreset" data-val="amber">Sunset Amber</button>
+            <button class="opt-btn" data-setting="themePreset" data-val="custom">Custom Color</button>
+          </div>
+          <div class="custom-color-row hidden" id="custom-theme-color-row">
+            <span class="sub-label">Custom Accent Tint</span>
+            <input type="color" id="input-custom-color" value="#ffffff" class="color-picker-input">
+          </div>
+          <div class="slider-row">
+            <div class="flex-between">
+              <span class="sub-label">Acrylic Smoky Blur</span>
+              <span id="label-blur-val" class="sub-val">32px</span>
+            </div>
+            <input type="range" id="input-glass-blur" min="8" max="64" value="32" class="range-slider">
+          </div>
+          <div class="slider-row">
+            <div class="flex-between">
+              <span class="sub-label">Glass Dark Opacity</span>
+              <span id="label-opacity-val" class="sub-val">65%</span>
+            </div>
+            <input type="range" id="input-acrylic-opacity" min="20" max="90" value="65" class="range-slider">
+          </div>
+        </div>
+
+        <!-- 3. Typography & Lyric Styling -->
+        <div class="settings-group">
+          <label class="settings-label">✍️ Typography &amp; Lyric Layout</label>
+          <div class="settings-options-row">
+            <button class="opt-btn active" data-setting="fontFamily" data-val="Inter">Inter (Modern)</button>
+            <button class="opt-btn" data-setting="fontFamily" data-val="Playfair">Playfair (Editorial)</button>
+            <button class="opt-btn" data-setting="fontFamily" data-val="Plus Jakarta Sans">Jakarta (Grotesk)</button>
+            <button class="opt-btn" data-setting="fontFamily" data-val="JetBrains Mono">JetBrains (Mono)</button>
+          </div>
+          <div class="settings-options-row">
+            <button class="opt-btn" data-setting="fontSize" data-val="small">Compact</button>
+            <button class="opt-btn active" data-setting="fontSize" data-val="medium">Standard</button>
+            <button class="opt-btn" data-setting="fontSize" data-val="large">Large</button>
+            <button class="opt-btn" data-setting="fontSize" data-val="huge">Cinematic</button>
+          </div>
+          <div class="settings-options-row">
+            <button class="opt-btn active" data-setting="lyricAlign" data-val="left">Align Left</button>
+            <button class="opt-btn" data-setting="lyricAlign" data-val="center">Align Center</button>
+            <button class="opt-btn" data-setting="lyricAlign" data-val="right">Align Right</button>
+          </div>
+          <div class="settings-options-row">
+            <button class="opt-btn" data-setting="lyricGlow" data-val="subtle">Subtle Glow</button>
+            <button class="opt-btn active" data-setting="lyricGlow" data-val="radiant">Radiant Bloom</button>
+            <button class="opt-btn" data-setting="lyricGlow" data-val="bloom">Intense Luminous</button>
+          </div>
+          <div class="slider-row">
+            <div class="flex-between">
+              <span class="sub-label">Active Line Focus Height</span>
+              <span id="label-focus-val" class="sub-val">42%</span>
+            </div>
+            <input type="range" id="input-focus-position" min="25" max="65" value="42" class="range-slider">
+          </div>
+        </div>
+
+        <!-- 4. Windows Native & System -->
+        <div class="settings-group">
+          <label class="settings-label">🪟 Windows Integration &amp; Tray</label>
+          <div class="toggle-row">
+            <span>Minimize to System Tray</span>
+            <input type="checkbox" id="toggle-min-tray" class="switch-input">
+          </div>
+          <div class="toggle-row">
+            <span>Close button hides to Tray</span>
+            <input type="checkbox" id="toggle-close-tray" class="switch-input">
+          </div>
+          <div class="toggle-row">
+            <span>Windows SMTC &amp; Hardware Media Keys</span>
+            <input type="checkbox" id="toggle-media-keys" checked class="switch-input">
+          </div>
+        </div>
+
+        <!-- 5. Accessibility & Performance -->
+        <div class="settings-group">
+          <label class="settings-label">⚡ Experience &amp; Accessibility</label>
+          <div class="toggle-row">
+            <span>Word-by-Word Highlighting Animation</span>
+            <input type="checkbox" id="toggle-word-sync" checked class="switch-input">
+          </div>
+          <div class="toggle-row">
+            <span>Auto-fetch Synced Lyrics via LRCLIB</span>
+            <input type="checkbox" id="toggle-auto-lrclib" checked class="switch-input">
+          </div>
+          <div class="toggle-row">
+            <span>Ambient Particle &amp; Film Grain Texture</span>
+            <input type="checkbox" id="toggle-particles" checked class="switch-input">
+          </div>
+          <div class="toggle-row">
+            <span>Reduced Motion Mode</span>
+            <input type="checkbox" id="toggle-reduced-motion" class="switch-input">
+          </div>
+        </div>
+
+        <!-- 6. Shortcuts -->
+        <div class="settings-group">
+          <label class="settings-label">⌨️ Keyboard Shortcuts</label>
+          <div class="shortcuts-grid">
+            <div><kbd>Space</kbd> Play / Pause</div>
+            <div><kbd>←</kbd> / <kbd>→</kbd> Seek ±5 sec</div>
+            <div><kbd>Ctrl</kbd>+<kbd>←</kbd> / <kbd>→</kbd> Prev / Next Track</div>
+            <div><kbd>↑</kbd> / <kbd>↓</kbd> Volume Up / Down</div>
+            <div><kbd>L</kbd> Toggle Lyrics View</div>
+            <div><kbd>F</kbd> / <kbd>F11</kbd> Fullscreen Lyrics Mode</div>
+            <div><kbd>T</kbd> Desktop Transparent Overlay</div>
+            <div><kbd>M</kbd> Mute / Unmute</div>
+            <div><kbd>S</kbd> Shuffle Toggle</div>
+            <div><kbd>R</kbd> Repeat Mode Toggle</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Playlist Modal -->
+  <div id="create-playlist-modal" class="modal-backdrop hidden">
+    <div class="modal-card glassy-card modal-sm">
+      <div class="modal-header">
+        <h3 class="modal-title">Create New Playlist</h3>
+        <button id="btn-close-create-playlist" class="modal-close-btn">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Playlist Name</label>
+          <input type="text" id="input-playlist-name" class="modal-input" placeholder="e.g. Midnight Vibes, Gym Pump, Focus..." maxlength="60">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description (Optional)</label>
+          <textarea id="input-playlist-desc" class="modal-textarea" placeholder="Give your playlist a mood or description..." rows="2" maxlength="150"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-cancel-create-playlist" class="secondary-button">Cancel</button>
+        <button id="btn-submit-create-playlist" class="primary-button">Create Playlist</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add to Playlist Picker Modal -->
+  <div id="add-to-playlist-modal" class="modal-backdrop hidden">
+    <div class="modal-card glassy-card modal-sm">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="modal-title">Add to Playlist</h3>
+          <span id="add-to-playlist-track-name" class="modal-subtitle">Select a playlist</span>
+        </div>
+        <button id="btn-close-add-playlist" class="modal-close-btn">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="quick-new-pl-row">
+          <input type="text" id="input-quick-playlist-name" class="modal-input" placeholder="Create new playlist...">
+          <button id="btn-quick-create-pl" class="primary-button compact">Create</button>
+        </div>
+        <div class="picker-divider">OR CHOOSE EXISTING</div>
+        <div id="playlists-picker-list" class="playlists-picker-list">
+          <!-- Populated dynamically with user playlists -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post-Install / First-Run GitHub Star Welcome Modal -->
+  <div id="first-run-modal" class="modal-backdrop hidden">
+    <div class="modal-card glassy-card modal-welcome">
+      <div class="welcome-header">
+        <div class="welcome-badge">WELCOME TO LYRIIC</div>
+        <h2 class="welcome-title">Immersive Lyrics &amp; Music</h2>
+        <p class="welcome-sub">Crafted with passion by <strong>jeetron1x</strong></p>
+      </div>
+      <div class="welcome-body">
+        <p class="welcome-text">
+          Thank you for installing <strong>Lyriic</strong>! Enjoy word-by-word kinetic lyrics, 120 FPS spring animations, audio-reactive ambient lighting, translucent desktop overlay, and unlimited playlists.
+        </p>
+        <div class="welcome-star-box glassy-card">
+          <div class="star-box-left">
+            <span class="star-icon">⭐</span>
+            <div>
+              <strong>Show your love!</strong>
+              <p>If you like Lyriic, please leave a star on the official GitHub repository. It means the world!</p>
+            </div>
+          </div>
+          <button id="btn-welcome-star" class="star-github-btn github-link-btn" data-url="https://github.com/jeetron1x">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path>
+            </svg>
+            <span>Leave a ⭐ Star</span>
+          </button>
+        </div>
+      </div>
+      <div class="welcome-footer">
+        <button id="btn-welcome-start" class="primary-button welcome-start-btn">Start Listening</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

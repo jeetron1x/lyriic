@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <radialGradient id="starGlow" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#4f75ff" stop-opacity="0.9"/>
+      <stop offset="35%" stop-color="#1e274a" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#0e111a" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#08090d" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="coreLight" cx="50%" cy="38%" r="30%">
+      <stop offset="0%" stop-color="#e0eaff" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#7096ff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#4f75ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glassBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="35" />
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" />
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="600" height="600" fill="url(#starGlow)"/>
+
+  <!-- Fluid Smoky Blobs -->
+  <circle cx="280" cy="240" r="140" fill="#6d83f2" opacity="0.35" filter="url(#glassBlur)"/>
+  <circle cx="360" cy="320" r="160" fill="#3854d9" opacity="0.45" filter="url(#glassBlur)"/>
+  <circle cx="200" cy="400" r="120" fill="#1b2559" opacity="0.5" filter="url(#glassBlur)"/>
+
+  <!-- Glowing Starlight Sphere -->
+  <circle cx="300" cy="270" r="90" fill="url(#coreLight)" filter="url(#softGlow)"/>
+  <circle cx="300" cy="270" r="4" fill="#ffffff" opacity="0.95"/>
+
+  <!-- Subtle orbital rings -->
+  <ellipse cx="300" cy="270" rx="180" ry="60" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" transform="rotate(-15 300 270)"/>
+  <ellipse cx="300" cy="270" rx="220" ry="75" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" transform="rotate(25 300 270)"/>
+
+  <!-- Typography overlay -->
+  <g font-family="system-ui, -apple-system, sans-serif" letter-spacing="3">
+    <text x="48" y="520" fill="#ffffff" font-size="24" font-weight="600" opacity="0.95">ECHOES OF STARLIGHT</text>
+    <text x="48" y="548" fill="#8b9bb4" font-size="13" font-weight="400" letter-spacing="4">AURA &amp; THE MIST</text>
+  </g>
+</svg>

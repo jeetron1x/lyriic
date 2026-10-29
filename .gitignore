@@ -1,0 +1,34 @@
+# .gitignore for Lyriic
+# Crafted by jeetron1x
+
+# Node dependencies
+node_modules/
+package-lock.json.bak
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs and distribution
+dist/
+dist-installer/
+dist-obfuscated/
+out/
+build/
+
+# Local cache & electron runtime
+.cache/
+.electron/
+*.asar
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Sensitive environment & certificate files
+certs/
+*.pfx
+.env
+.env.local
+.env.*.local

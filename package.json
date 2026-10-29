@@ -1,0 +1,33 @@
+{
+  "name": "lyriic",
+  "version": "1.0.0",
+  "description": "Windows music player with animated lyrics, smoky glass look & fullscreen immersive mode",
+  "main": "src/main/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "package": "node scripts/build_protected.cjs",
+    "build:protected": "node scripts/build_protected.cjs",
+    "installer": "npx electron-builder --win nsis --prepackaged dist/Lyriic-win32-x64",
+    "generate-assets": "node scripts/generate_audio.cjs && node scripts/generate_covers.cjs && node scripts/generate_icons.cjs"
+  },
+  "keywords": [
+    "music-player",
+    "lyrics",
+    "word-by-word",
+    "windows",
+    "karaoke",
+    "smoky-glass"
+  ],
+  "author": "jeetron1x",
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "music-metadata": "^12.3.2"
+  },
+  "devDependencies": {
+    "@electron/packager": "^18.4.4",
+    "electron": "^34.3.0",
+    "electron-builder": "^26.18.0",
+    "javascript-obfuscator": "^5.9.0"
+  }
+}
