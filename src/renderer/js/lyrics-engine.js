@@ -11,7 +11,7 @@ export class LyricsEngine {
     this.lines = [];
     this.activeIndex = -1;
     this.offset = 0;
-    this.style = 'verci'; // 'verci', 'spatial', 'minimal', 'dual'
+    this.style = 'kinetic'; // 'kinetic', 'spatial', 'minimal', 'dual'
     this.alignment = 'left';
     this.focusPosition = 42; // percent from top
     this.glowLevel = 'radiant';
@@ -83,13 +83,13 @@ export class LyricsEngine {
   }
 
   setStyle(style) {
-    this.style = style;
+    this.style = style || 'kinetic';
     if (this.container) {
-      this.container.classList.toggle('is-dual-mode', style === 'dual');
+      this.container.classList.toggle('is-dual-mode', this.style === 'dual');
     }
     if (this.listElement) {
-      this.listElement.classList.remove('style-verci', 'style-spatial', 'style-minimal', 'style-dual');
-      this.listElement.classList.add(`style-${style}`);
+      this.listElement.classList.remove('style-kinetic', 'style-spatial', 'style-minimal', 'style-dual');
+      this.listElement.classList.add(`style-${this.style}`);
       this.updateLineClasses();
       this.updateDisplayModes();
       this.scrollToActiveLine(false);

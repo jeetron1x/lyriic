@@ -1,5 +1,5 @@
 /* src/renderer/css/style.css */
-/* Lyriic - Smoky Glass, Lumn Ambient Lighting & Kinetic Lyrics Aesthetics */
+/* Lyriic - Smoky Glass, Ambient Lighting & Kinetic Lyrics Aesthetics */
 
 :root {
   /* Dynamic Theme Variables - Default: Sleek Black & White Monochrome Smoky Glass */
@@ -21,7 +21,7 @@
   --accent-glow: rgba(255, 255, 255, 0.55);
   --accent-gradient: linear-gradient(135deg, #ffffff 0%, rgba(200, 200, 200, 0.8) 100%);
 
-  /* Lumn Ambient Lighting Variables (trylumn.xyz) */
+  /* Ambient Lighting Variables */
   --ambient-intensity: 1.0;
   --ambient-glow-color: rgba(255, 255, 255, 0.75);
   --halo-spread: 45px;
@@ -144,9 +144,9 @@ input {
 }
 
 /* =========================================================
-   Lumn-Style Ambient Edge Backlight Halo (trylumn.xyz)
+   Ambient Edge Backlight Halo (Audio-Reactive)
    ========================================================= */
-.lumn-edge-halo {
+.ambient-edge-halo {
   position: fixed;
   inset: 0;
   z-index: 150;
@@ -162,7 +162,7 @@ input {
   will-change: box-shadow, opacity;
 }
 
-.lumn-edge-halo::before {
+.ambient-edge-halo::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -519,14 +519,14 @@ input {
 }
 
 /* Ambient Spread Sides Modes */
-body.sides-tb .lumn-edge-halo,
+body.sides-tb .ambient-edge-halo,
 body.sides-tb .fs-ambient-halo {
   box-shadow:
     inset 0 calc(var(--halo-spread) * 1.6) calc(var(--halo-spread) * 0.4) var(--ambient-glow-color),
     inset 0 calc(-1 * var(--halo-spread) * 1.6) calc(var(--halo-spread) * 0.4) var(--ambient-glow-color) !important;
 }
 
-body.sides-lr .lumn-edge-halo,
+body.sides-lr .ambient-edge-halo,
 body.sides-lr .fs-ambient-halo {
   box-shadow:
     inset calc(var(--halo-spread) * 1.6) 0 calc(var(--halo-spread) * 0.4) var(--ambient-glow-color),
@@ -1952,7 +1952,7 @@ body.is-overlay-mode {
 }
 
 body.is-overlay-mode #ambient-backdrop,
-body.is-overlay-mode #lumn-edge-halo,
+body.is-overlay-mode #ambient-edge-halo,
 body.is-overlay-mode #fullscreen-overlay {
   display: none !important;
   opacity: 0 !important;

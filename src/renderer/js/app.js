@@ -1,5 +1,5 @@
 // src/renderer/js/app.js
-// Main application controller for Lyriic with Lumn-inspired ambient lighting & dynamic theming
+// Main application controller for Lyriic with ambient lighting & dynamic theming
 
 import { Storage } from './storage.js';
 import { AudioPlayer } from './audio-player.js';
@@ -17,7 +17,7 @@ class LyriicApp {
     this.hudTimer = null;
     this.searchDebounceTimer = null;
 
-    // Beat detection state for Lumn-style ambient lighting
+    // Beat detection state for ambient lighting
     this.prevBass = 0;
     this.beatBloom = 1.0;
     this.beatDecayRate = 0.94;
@@ -35,7 +35,7 @@ class LyriicApp {
   initDOM() {
     this.appShell = document.getElementById('app-shell');
     this.ambientBackdrop = document.getElementById('ambient-backdrop');
-    this.lumnHalo = document.getElementById('lumn-edge-halo');
+    this.ambientHalo = document.getElementById('ambient-edge-halo');
     this.fullscreenOverlay = document.getElementById('fullscreen-overlay');
     this.desktopOverlayWidget = document.getElementById('desktop-overlay-widget');
     this.settingsModal = document.getElementById('settings-modal');
@@ -374,12 +374,12 @@ class LyriicApp {
     }
 
     // Ambient Lighting
-    if (this.lumnHalo) {
-      this.lumnHalo.classList.toggle('hidden', settings.ambientLighting === false);
+    if (this.ambientHalo) {
+      this.ambientHalo.classList.toggle('hidden', settings.ambientLighting === false);
     }
     if (this.ambientBackdrop) {
       this.ambientBackdrop.classList.toggle('ambient-disabled', settings.ambientLighting === false);
-      this.ambientBackdrop.className = `ambient-backdrop mode-${settings.ambientMode || 'lumn'}`;
+      this.ambientBackdrop.className = `ambient-backdrop mode-${settings.ambientMode || 'beat'}`;
     }
 
     // Particle texture
@@ -389,14 +389,14 @@ class LyriicApp {
     }
 
     // Engine styling
-    this.lyricsEngine.setStyle(settings.lyricStyle || 'verci');
+    this.lyricsEngine.setStyle(settings.lyricStyle || 'kinetic');
     this.lyricsEngine.setAlignment(settings.lyricAlign || 'left');
     this.lyricsEngine.setGlowLevel(settings.lyricGlow || 'radiant');
     this.lyricsEngine.setFocusPosition(settings.focusPosition || 42);
     this.lyricsEngine.setReducedMotion(settings.reducedMotion);
     this.lyricsEngine.setWordSync(settings.wordSyncEnabled);
 
-    this.fsLyricsEngine.setStyle(settings.lyricStyle || 'verci');
+    this.fsLyricsEngine.setStyle(settings.lyricStyle || 'kinetic');
     this.fsLyricsEngine.setAlignment('center');
     this.fsLyricsEngine.setGlowLevel(settings.lyricGlow || 'radiant');
     this.fsLyricsEngine.setReducedMotion(settings.reducedMotion);
@@ -898,7 +898,7 @@ class LyriicApp {
       this.isFullScreen = isFs;
       this.fullscreenOverlay.classList.toggle('hidden', !isFs);
       if (isFs) {
-        this.fsLyricsEngine.setStyle(this.settings.lyricStyle || 'verci');
+        this.fsLyricsEngine.setStyle(this.settings.lyricStyle || 'kinetic');
         this.fsLyricsEngine.setGlowLevel(this.settings.lyricGlow || 'radiant');
         this.fsLyricsEngine.setWordSync(this.settings.wordSyncEnabled);
         this.fsLyricsEngine.setFocusPosition(50);
@@ -919,7 +919,7 @@ class LyriicApp {
     // Continuous 120 FPS ambient loop for Breathe, Aurora, Spectrum cycle, and organic flow
     const ambientLoop = () => {
       if (this.settings.ambientLighting !== false) {
-        const mode = this.settings.ambientMode || 'lumn';
+        const mode = this.settings.ambientMode || 'beat';
         const colorSource = this.settings.ambientColorSource || 'monochrome';
         const speed = this.settings.ambientSpeed || 1.0;
         const intensity = this.settings.ambientIntensity || 1.0;
@@ -974,7 +974,7 @@ class LyriicApp {
     this.audioPlayer.onAudioFrequencies = ({ bass, mid, treble }) => {
       if (this.settings.reducedMotion) return;
 
-      const mode = this.settings.ambientMode || 'lumn';
+      const mode = this.settings.ambientMode || 'beat';
       const sensitivity = this.settings.beatSensitivity || 1.0;
       const intensity = this.settings.ambientIntensity || 1.0;
       const baseSpread = this.settings.ambientSpread || 45;
@@ -996,7 +996,7 @@ class LyriicApp {
       if (orb2) orb2.style.transform = `scale(${dynamicScale2})`;
       if (orb3) orb3.style.transform = `scale(${dynamicScale3})`;
 
-      if (this.settings.ambientLighting !== false && mode === 'lumn') {
+      if (this.settings.ambientLighting !== false && mode === 'beat') {
         const glowSpread = Math.round(baseSpread + bass * 60 * intensity * this.beatBloom);
         const glowOpacity = Math.min(1.0, (0.5 + bass * 0.5 * intensity * this.beatBloom)).toFixed(2);
         document.documentElement.style.setProperty('--halo-spread', `${glowSpread}px`);
@@ -1223,7 +1223,7 @@ class LyriicApp {
     }
 
     if (this.isFullScreen) {
-      this.fsLyricsEngine.setStyle(this.settings.lyricStyle || 'verci');
+      this.fsLyricsEngine.setStyle(this.settings.lyricStyle || 'kinetic');
       this.fsLyricsEngine.setGlowLevel(this.settings.lyricGlow || 'radiant');
       this.fsLyricsEngine.setWordSync(this.settings.wordSyncEnabled);
       this.fsLyricsEngine.setFocusPosition(50);

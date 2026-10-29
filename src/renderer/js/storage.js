@@ -16,13 +16,13 @@ const STORAGE_KEYS = {
 const DEFAULT_SETTINGS = {
   fontFamily: 'Inter', // 'Inter', 'Playfair', 'Plus Jakarta Sans', 'JetBrains Mono'
   fontSize: 'medium', // 'small', 'medium', 'large', 'huge'
-  lyricStyle: 'verci', // 'verci' (kinetic), 'spatial' (3D), 'minimal' (editorial), 'dual' (subtitle)
+  lyricStyle: 'kinetic', // 'kinetic', 'spatial', 'minimal', 'dual'
   themePreset: 'monochrome', // 'monochrome' (Black & White default!), 'dynamic', 'obsidian', 'frost', 'amethyst', 'emerald', 'amber', 'custom'
   customAccentColor: '#ffffff',
   glassBlur: 32, // blur px (8..64)
   acrylicOpacity: 0.65, // 0.2..0.9
-  ambientLighting: true, // Lumn-style audio-reactive lighting
-  ambientMode: 'lumn', // 'lumn' (audio beat sync), 'aurora', 'breathe', 'spectrum', 'neon', 'static'
+  ambientLighting: true, // Audio-reactive ambient lighting
+  ambientMode: 'beat', // 'beat' (audio beat sync), 'aurora', 'breathe', 'spectrum', 'neon', 'static'
   ambientColorSource: 'monochrome', // 'monochrome' (B&W pure white halo), 'dynamic' (album cover), 'custom', 'spectrum', 'cyberpunk', 'sunset'
   ambientSpread: 45, // px (10..150)
   ambientSpeed: 1.0, // multiplier (0.2..3.0)
@@ -46,7 +46,14 @@ export const Storage = {
   getSettings() {
     try {
       const data = localStorage.getItem(STORAGE_KEYS.SETTINGS);
-      return data ? { ...DEFAULT_SETTINGS, ...JSON.parse(data) } : { ...DEFAULT_SETTINGS };
+      const settings = data ? { ...DEFAULT_SETTINGS, ...JSON.parse(data) } : { ...DEFAULT_SETTINGS };
+      if (!['kinetic', 'spatial', 'minimal', 'dual'].includes(settings.lyricStyle)) {
+        settings.lyricStyle = 'kinetic';
+      }
+      if (!['beat', 'aurora', 'breathe', 'spectrum', 'neon', 'static'].includes(settings.ambientMode)) {
+        settings.ambientMode = 'beat';
+      }
+      return settings;
     } catch {
       return { ...DEFAULT_SETTINGS };
     }

@@ -24,7 +24,7 @@
 
 ## 🌟 Overview
 
-**Lyriic** is a modern, privacy-friendly desktop music player for Windows built for audiophiles and lyric lovers. Featuring **120 FPS spring-damped word-by-word kinetic lyrics**, **Lumn-inspired audio-reactive ambient lighting**, **translucent smoky glass overlays**, and **innumerable custom playlists**, Lyriic brings a calm, sleek, and mesmerizing visual stage right to your desktop.
+**Lyriic** is a modern, privacy-friendly desktop music player for Windows built for audiophiles and lyric lovers. Featuring **120 FPS spring-damped word-by-word kinetic lyrics**, **audio-reactive ambient lighting**, **translucent smoky glass overlays**, and **innumerable custom playlists**, Lyriic brings a calm, sleek, and mesmerizing visual stage right to your desktop.
 
 ---
 
@@ -33,14 +33,14 @@
 ### 🎙️ 1. 120 FPS Kinetic Lyrics with Exact 50vh Center Alignment
 - **Word-by-Word Synchronized Highlights**: Lyrics wipe letter-by-letter in real-time, synchronized with audio down to the millisecond.
 - **4 Distinct Typography Styles**:
-  - **Verci Kinetic**: Modern flowing typography with elastic spring damping.
+  - **Kinetic Flow**: Modern flowing typography with elastic spring damping.
   - **Spatial 3D Perspective Wall**: 3D perspective depth (`translateZ`, specular tilt, and dynamic fog).
   - **Minimal**: Editorial layout with high-contrast monochrome elegance.
   - **Dual Subtitle Cassette**: Dual cards highlighting the active line and the upcoming line.
 - **Exact 50vh Vertical Centering**: Lyrics always stay centered on screen regardless of song length.
 - **Instrumental Detection (`···`)**: Detects instrumental intros and guitar/synth solos, rendering pulsing `···` dots to avoid lyrics desync.
 
-### 💡 2. Lumn-Style Audio-Reactive Ambient Lighting ([trylumn.xyz](https://www.trylumn.xyz/))
+### 💡 2. Audio-Reactive Ambient Lighting
 - **Audio-Reactive Halo**: Edge-lit window halo pulsing dynamically to the beat and audio frequencies.
 - **6 Custom Lighting Modes**:
   - *Beat Pulse* (instantaneous transient kick bloom)

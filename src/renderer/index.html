@@ -11,11 +11,11 @@
 </head>
 <body class="theme-dynamic font-inter size-medium">
 
-  <!-- Lumn-style Ambient Edge Backlight Halo (Audio-Reactive) -->
-  <div id="lumn-edge-halo" class="lumn-edge-halo"></div>
+  <!-- Ambient Edge Backlight Halo (Audio-Reactive) -->
+  <div id="ambient-edge-halo" class="ambient-edge-halo"></div>
 
   <!-- Smoky Ambient Mesh Reactive Background -->
-  <div id="ambient-backdrop" class="ambient-backdrop mode-lumn">
+  <div id="ambient-backdrop" class="ambient-backdrop mode-beat">
     <div class="smoke-orb orb-1"></div>
     <div class="smoke-orb orb-2"></div>
     <div class="smoke-orb orb-3"></div>
@@ -187,7 +187,7 @@
           <!-- Lyrics Toolbar Header -->
           <div class="lyrics-toolbar glassy-bar">
             <div class="lyrics-styles-group">
-              <button class="style-pill active" data-style="verci" title="Verci Kinetic Typography">Kinetic</button>
+              <button class="style-pill active" data-style="kinetic" title="Kinetic Flow Typography">Kinetic</button>
               <button class="style-pill" data-style="spatial" title="Spatial 3D Perspective Wall">Spatial 3D</button>
               <button class="style-pill" data-style="minimal" title="Editorial Minimalist">Minimal</button>
               <button class="style-pill" data-style="dual" title="Dual Subtitle Focus Cassette">Dual</button>
@@ -234,7 +234,7 @@
 
           <!-- Lyrics Display Container -->
           <div id="lyrics-scroll-container" class="lyrics-scroll-container">
-            <div id="lyrics-list" class="lyrics-list style-verci">
+            <div id="lyrics-list" class="lyrics-list style-kinetic">
               <!-- Dynamically populated by LyricsEngine -->
             </div>
 
@@ -583,7 +583,7 @@
 
   <!-- Fullscreen Immersive Lyrics Mode -->
   <div id="fullscreen-overlay" class="fullscreen-overlay hidden">
-    <!-- Lumn Ambient Edge Halo for Fullscreen -->
+    <!-- Ambient Edge Halo for Fullscreen -->
     <div class="fs-ambient-halo"></div>
 
     <div class="fs-top-bar">
@@ -602,7 +602,7 @@
 
     <!-- Center Hero Kinetic Typography -->
     <div id="fs-lyrics-container" class="fs-lyrics-container">
-      <div id="fs-lyrics-list" class="lyrics-list style-verci"></div>
+      <div id="fs-lyrics-list" class="lyrics-list style-kinetic"></div>
     </div>
 
     <!-- Floating Bottom Playback HUD on Mouse Move -->
@@ -721,9 +721,9 @@
           </button>
         </div>
 
-        <!-- 1. Lumn-style Ambient Lighting Section (trylumn.xyz) -->
+        <!-- 1. Ambient Lighting Section -->
         <div class="settings-group">
-          <label class="settings-label">💡 Ambient Edge Lighting (Lumn-Style)</label>
+          <label class="settings-label">💡 Ambient Edge Backlighting</label>
           <div class="toggle-row">
             <span>Enable Audio &amp; Beat-Synced Lighting</span>
             <input type="checkbox" id="toggle-ambient-lighting" checked class="switch-input">
@@ -731,7 +731,7 @@
 
           <div class="sub-section-title">LIGHTING EFFECT MODE</div>
           <div class="settings-options-row">
-            <button class="opt-btn active" data-setting="ambientMode" data-val="lumn">Beat Pulse</button>
+            <button class="opt-btn active" data-setting="ambientMode" data-val="beat">Beat Pulse</button>
             <button class="opt-btn" data-setting="ambientMode" data-val="aurora">Aurora Wave</button>
             <button class="opt-btn" data-setting="ambientMode" data-val="breathe">Organic Breathe</button>
             <button class="opt-btn" data-setting="ambientMode" data-val="spectrum">Spectrum Wave</button>
