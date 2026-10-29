@@ -5,6 +5,7 @@
 ### The Ultimate Windows Music Player with Kinetic Word-by-Word Animated Lyrics, Audio-Reactive Ambient Lighting & Translucent Smoky Glass Aesthetics
 
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/jeetron1x/lyriic/releases)
+[![Website](https://img.shields.io/badge/Website-jeetron1x.github.io%2Flyriic-fb6e90?style=for-the-badge&logo=googlechrome&logoColor=white)](https://jeetron1x.github.io/lyriic/)
 [![Version: 1.0.0](https://img.shields.io/badge/Release-v1.0.0-6366f1?style=for-the-badge)](https://github.com/jeetron1x/lyriic/releases)
 [![Publisher: Jeetron1x](https://img.shields.io/badge/Publisher-Jeetron1x-10b981?style=for-the-badge&logo=github)](https://github.com/jeetron1x)
 [![License: MIT](https://img.shields.io/badge/License-MIT-f59e0b?style=for-the-badge)](LICENSE)
@@ -14,7 +15,7 @@
 
 **Crafted with passion by [Jeetron1x](https://github.com/jeetron1x)**
 
-[📥 Download Installer (v1.0.0)](https://github.com/jeetron1x/lyriic/releases/latest) • [✨ Features](#-key-features) • [⌨️ Shortcuts](#️-keyboard-shortcuts) • [🛡️ Security](#-anti-reverse-engineering--security) • [⭐ Star on GitHub](https://github.com/jeetron1x)
+[🌐 Official Website](https://jeetron1x.github.io/lyriic/) • [📥 Download Installer (v1.0.0)](https://github.com/jeetron1x/lyriic/releases/latest) • [✨ Features](#-key-features) • [⌨️ Shortcuts](#️-keyboard-shortcuts) • [🛡️ Security](#-anti-reverse-engineering--security) • [⭐ Star on GitHub](https://github.com/jeetron1x)
 
 ---
 
