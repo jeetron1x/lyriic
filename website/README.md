@@ -1,6 +1,6 @@
 # Lyriic Marketing Website
 
-Production-ready, high-performance single-page marketing website for **Lyriic** (Windows Music Player with Kinetic Lyrics & Ambient Halo). Built strictly with the **Lumn Dark Pulse** design system.
+Production-ready, high-performance single-page marketing website for **Lyriic** (Windows Music Player with Kinetic Lyrics & Ambient Halo). Built strictly with the **Lyriic Dark Pulse** design system.
 
 ---
 

@@ -1,4 +1,4 @@
-# Lumn Dark Pulse Design System
+# Lyriic Dark Pulse Design System
 
 This document specifies the design tokens, typography, component geometry, motion choreography, and aesthetic rules for **Lyriic**'s marketing website. Every token defined here is mirrored in `tailwind.config.js` and `src/index.css`.
 

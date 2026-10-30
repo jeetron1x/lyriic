@@ -19,7 +19,8 @@
     "smoky-glass"
   ],
   "author": "jeetron1x",
-  "license": "MIT",
+  "license": "UNLICENSED",
+  "private": true,
   "dependencies": {
     "crypto-js": "^4.2.0",
     "music-metadata": "^12.3.2"

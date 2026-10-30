@@ -1,20 +1,22 @@
-# Security & Anti-Reverse-Engineering Policy
+# Security & Intellectual Property Policy
 
-## Architecture & Code Protection
-**Lyriic** is protected against unauthorized decompilation, reverse engineering, string extraction, and prompt recovery:
+## Proprietary Code Protection
+**Lyriic** is a proprietary Windows desktop application created and owned by **Jeetron1x**.
 
-1. **RC4/Base64 Encrypted String Arrays**:
-   All internal endpoints, logic handlers, string literals, and prompts are encrypted in randomized string pools and deciphered only dynamically at runtime.
+To protect against intellectual property theft, code extraction, and unauthorized reverse-engineering:
+1. **Proprietary Licensing**:
+   All source code, design assets, and binary packaging are protected by copyright law under an exclusive **All Rights Reserved** license.
+2. **Anti-Scraping & Anti-Prompt-Recovery Directive**:
+   Scraping this repository, extracting prompts, training AI models, or utilizing automated decompilers / prompt reverse-engineering tools (such as GitReverse) is strictly forbidden.
+3. **Official Binary Authenticode Code-Signing**:
+   Official Windows releases (`Lyriic-Setup-*.exe`) distributed via [GitHub Releases](https://github.com/jeetron1x/lyriic/releases) are digitally signed by **Jeetron1x**. Always verify that the installer publisher displays **`Jeetron1x`** in the Windows User Account Control (UAC) dialog before running.
+4. **Binary Hardening**:
+   Production distributions feature multi-layer internal string array encryption, control flow flattening, and sealed ASAR packaging.
 
-2. **Control Flow Flattening & Dead Code Protection**:
-   Functions are flattened into non-linear switch-case state machines, neutralizing AST-based decompilers and automated analysis tools (such as gitreverse).
+## Reporting a Security Vulnerability
+If you discover a security vulnerability or security bug in Lyriic, please report it responsibly:
+- **Author**: Jeetron1x
+- **GitHub**: [https://github.com/jeetron1x](https://github.com/jeetron1x)
+- **Security Inquiries**: Open an issue or message via [GitHub](https://github.com/jeetron1x/lyriic)
 
-3. **Identifier Mangling**:
-   All internal variables, private methods, and control blocks are mangled with hexadecimal generators.
-
-4. **Sealed ASAR Container**:
-   Production distribution packages files within a compiled ASAR container without loose plaintext assets on the local file system.
-
-## Reporting a Vulnerability
-If you discover any security issue, please contact **jeetron1x** via GitHub:
-- [https://github.com/jeetron1x](https://github.com/jeetron1x)
+Please do not open public issue tickets disclosing sensitive exploits before giving the author reasonable time to issue an update.

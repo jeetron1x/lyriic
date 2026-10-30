@@ -32,3 +32,9 @@ certs/
 .env
 .env.local
 .env.*.local
+
+# Proprietary desktop application source (Kept local and private)
+src/
+scripts/
+electron-builder.yml
+.github/

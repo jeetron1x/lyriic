@@ -8,7 +8,7 @@
 [![Website](https://img.shields.io/badge/Website-jeetron1x.github.io%2Flyriic-fb6e90?style=for-the-badge&logo=googlechrome&logoColor=white)](https://jeetron1x.github.io/lyriic/)
 [![Version: 1.0.0](https://img.shields.io/badge/Release-v1.0.0-6366f1?style=for-the-badge)](https://github.com/jeetron1x/lyriic/releases)
 [![Publisher: Jeetron1x](https://img.shields.io/badge/Publisher-Jeetron1x-10b981?style=for-the-badge&logo=github)](https://github.com/jeetron1x)
-[![License: MIT](https://img.shields.io/badge/License-MIT-f59e0b?style=for-the-badge)](LICENSE)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-dc2626?style=for-the-badge)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/jeetron1x/lyriic?style=for-the-badge&logo=github&color=eab308)](https://github.com/jeetron1x/lyriic/stargazers)
 
 <br/>
@@ -125,5 +125,5 @@ If you enjoy using **Lyriic**, please take a second to **leave a ⭐ Star on thi
 ---
 
 <div align="center">
-  <sub>Copyright © 2026 Jeetron1x. Licensed under the MIT License.</sub>
+  <sub>Copyright © 2026 Jeetron1x. All Rights Reserved. Official releases signed by Jeetron1x.</sub>
 </div>
