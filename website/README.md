@@ -67,7 +67,7 @@ If you capture real PNG screenshots of Lyriic running on Windows 11:
 1. Place your screenshots in `website/public/screenshots/`:
    - `app-window.png`: Main player window with kinetic lyrics.
    - `ambient-halo.png`: Edge-lit window halo in dark room.
-   - `smoky-overlay.png`: Desktop overlay mode (Press T).
+   - `smoky-overlay.png`: Desktop overlay mode.
    - `kinetic-flow.png`: Word-by-word kinetic typography.
 2. In `src/components/AppWindowMockup.tsx` or `src/components/Showcase.tsx`, you can optionally toggle an `<img>` tag:
    ```tsx
@@ -78,17 +78,3 @@ If you capture real PNG screenshots of Lyriic running on Windows 11:
    />
    ```
    Or continue using the live animated code mockup which reacts interactively to the playground chips and sliders!
-
----
-
-## Product Facts & Specifications
-
-- **Name**: Lyriic
-- **Tagline**: "Lyrics that move." / "Your music, in motion."
-- **Platform**: Windows 10 & 11 (64-bit). Version 1.0.0.
-- **License**: MIT (Free and open source). Publisher: Jeetron1x.
-- **Primary Download**:
-  - Installer: `Lyriic-Setup-1.0.0.exe` via [GitHub Releases](https://github.com/jeetron1x/lyriic/releases/latest)
-  - Portable: `Lyriic-1.0.0-win.zip`
-- **Shortcuts**: Space (Play/Pause), Left/Right (Seek 5s), Ctrl+Left/Right (Prev/Next), Up/Down (Volume), L (Lyrics), F/F11 (Fullscreen), T (Desktop Overlay), M (Mute), S (Shuffle), R (Repeat), Ctrl+, (Settings), Esc (Exit).
-- **Privacy**: 100% local, zero telemetry, zero accounts, no tracking.

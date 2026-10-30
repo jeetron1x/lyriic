@@ -1,22 +1,19 @@
 Copyright (c) 2026 Jeetron1x. All Rights Reserved.
 
-This software, documentation, website, designs, branding, and all associated media ("Lyriic") are proprietary intellectual property of Jeetron1x.
+This software, documentation, website, branding, and all associated media ("Lyriic") are proprietary intellectual property of Jeetron1x.
 
-TERMS AND CONDITIONS FOR END-USER USE:
+TERMS AND CONDITIONS:
 
 1. PROPRIETARY OWNERSHIP
    Lyriic is authored and owned exclusively by Jeetron1x. All rights not expressly granted herein are reserved.
 
-2. RESTRICTIONS ON USE, MODIFICATION, AND REPRODUCTION
-   No person or entity may copy, modify, distribute, publish, sublicense, sell, reverse engineer, decompile, disassemble, or extract components from this software, its binary distributions, or its documentation without prior express written authorization from Jeetron1x.
+2. RESTRICTIONS
+   No person or entity may copy, modify, distribute, publish, sublicense, sell, extract components, or create derivative works from this software, its binary distributions, or its documentation without prior express written authorization from Jeetron1x.
 
-3. PROHIBITION OF AI SCRAPING, PROMPT HARVESTING, AND AUTOMATED EXTRACTION
-   The use of this repository, its contents, documentation, commit history, releases, or associated assets for training, fine-tuning, prompting, or synthesizing code via machine learning models, automated prompt generators, or automated reverse-engineering tools (including, but not limited to, GitReverse, automated decompilers, or LLM prompt-reconstruction engines) is strictly prohibited.
+3. OFFICIAL BINARY DISTRIBUTION
+   Official code-signed Windows installers (published by Jeetron1x) provided via official GitHub Releases (https://github.com/jeetron1x/lyriic/releases) or the official website (https://jeetron1x.github.io/lyriic/) are licensed solely for personal, non-commercial desktop music playback.
 
-4. OFFICIAL BINARY DISTRIBUTION
-   Official code-signed Windows installers (published by Jeetron1x) provided via official GitHub Releases (https://github.com/jeetron1x/lyriic/releases) are licensed solely for personal, non-commercial end-user evaluation and desktop music playback.
-
-5. DISCLAIMER OF WARRANTY
+4. DISCLAIMER OF WARRANTY
    THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR OR COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THIS SOFTWARE.
 
 For licensing inquiries or permissions:
